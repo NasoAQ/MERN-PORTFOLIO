@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	font-family: "Montserrat", sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background-color: rgb(232, 234, 227);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgba(185, 62, 62, 0.506);
+	border-radius: 25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(250, 39, 66);
+}
+
+i {
+	cursor: pointer;
+}
+i:hover {
+	color: rgb(250, 39, 66);
+}
+
+/* loader animation */
+
+.n {
+	animation: n 1s infinite;
+}
+
+@keyframes n {
+	0% {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.s {
+	animation: s 1s infinite;
+}
+
+@keyframes s {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 0.5;
+	}
+}
+.o {
+	animation: o 1s infinite;
+}
+
+@keyframes o {
+	0% {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.5;
+	}
+}
