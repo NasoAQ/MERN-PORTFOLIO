@@ -1,23 +1,20 @@
 import React from "react";
 import Section from "../../components/Section";
+import { useSelector } from "react-redux";
 
 function About() {
-	const skills = [
-		"HTML",
-		"CSS",
-		"Javascript",
-		"MongoDB",
-		"Express",
-		"React",
-		"Node",
-	];
+	const { portfolioData } = useSelector(state => state.root);
+	const aboutData =
+		portfolioData && portfolioData.about && portfolioData.about[0];
+	const { skills, lottieURL, description1, description2 } = aboutData || {};
+
 	return (
 		<div>
 			<Section title="About" />
 			<div className="flex items-center w-full sm:flex-col">
 				<div className="h-[70vh] w-1/2 sm:w-full">
 					<dotlottie-player
-						src="https://lottie.host/16a42804-612d-4a74-801a-7bfe7014db15/5NyuwsgkyF.json"
+						src={lottieURL}
 						background="transparent"
 						speed="1"
 						loop
@@ -25,15 +22,8 @@ function About() {
 					></dotlottie-player>
 				</div>
 				<div className="flex flex-col gap-5 w-1/2 sm:w-full">
-					<p className="text-tertiary">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-						dolorum eius, voluptatem aut possimus omnis perferendis corrupti
-						mollitia architecto placeat.
-					</p>
-					<p className="text-tertiary">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-						delectus vero similique rem animi adipisci.
-					</p>
+					<p className="text-tertiary">{description1 || ""} </p>
+					<p className="text-tertiary">{description2}</p>
 				</div>
 			</div>
 
@@ -43,10 +33,8 @@ function About() {
 				</h1>
 				<div className="flex flex-wrap gap-10 mt-5">
 					{skills.map((skill, i) => (
-						<div className="border border-secondary py-3 px-10">
-							<h1 className="text-secondary" key={i}>
-								{skill}
-							</h1>
+						<div className="border border-secondary py-3 px-10" key={i}>
+							<h1 className="text-secondary">{skill}</h1>
 						</div>
 					))}
 				</div>

@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Section from "../../components/Section";
-import { experiences } from "../../resources/experiences";
+import { useSelector } from "react-redux";
 
 const Experiences = () => {
 	const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+	const { portfolioData } = useSelector(state => state.root);
+	const { experiences } = portfolioData;
+
 	return (
 		<div>
 			<Section title="Experiences" />
@@ -15,6 +18,7 @@ const Experiences = () => {
 								setSelectedItemIndex(i);
 							}}
 							className="cursor-pointer"
+							key={i}
 						>
 							<h1
 								className={`text-xl px-5 ${
