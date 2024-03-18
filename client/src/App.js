@@ -4,10 +4,18 @@ import { useEffect } from "react";
 import axios from "axios";
 import Loader from "./components/Loader";
 import { useDispatch, useSelector } from "react-redux";
-import { HideLoading, SetPortfolioData, ShowLoading } from "./redux/rootsSlice";
+import {
+	HideLoading,
+	ReloadData,
+	SetPortfolioData,
+	ShowLoading,
+} from "./redux/rootsSlice";
+import Admin from "./pages/admin/Admin";
 
 function App() {
-	const { loading, portfolioData } = useSelector(state => state.root);
+	const { loading, portfolioData, reloadData } = useSelector(
+		state => state.root
+	);
 	const dispatch = useDispatch();
 
 	const getPortfolioData = async () => {
@@ -15,6 +23,7 @@ function App() {
 			dispatch(ShowLoading(true));
 			const res = await axios.get("/api/portfolio/get-portfolio-data");
 			dispatch(SetPortfolioData(res.data));
+			dispatch(ReloadData(false));
 			dispatch(HideLoading());
 		} catch (error) {
 			dispatch(HideLoading());
@@ -26,11 +35,19 @@ function App() {
 			getPortfolioData();
 		}
 	}, [portfolioData]);
+
+	useEffect(() => {
+		if (reloadData) {
+			getPortfolioData();
+		}
+	}, [reloadData]);
+
 	return (
 		<BrowserRouter>
 			{loading ? <Loader /> : null}
 			<Routes>
 				<Route path="/" element={<Home />} />
+				<Route path="/admin" element={<Admin />} />
 			</Routes>
 		</BrowserRouter>
 	);

@@ -16,7 +16,7 @@ function Intro() {
 				{caption || ""}
 			</h1>
 			<p className="text-tertiary">{description || ""}</p>
-			<button className="border-2 border-secondary text-secondary px-10 py-3 rounded">
+			<button className="border-2 border-secondary text-secondary px-10 py-3 rounded hover:bg-red-200 hover:border-red-200 hover:text-tertiary">
 				Get Started
 			</button>
 		</div>

@@ -83,3 +83,27 @@ i:hover {
 		opacity: 0.5;
 	}
 }
+
+input,
+textarea {
+	height: 40px;
+	border: 1px solid grey;
+	border-radius: 10px;
+	width: 100%;
+	padding-left: 20px;
+}
+
+input:focus {
+	outline: none;
+	border: 2px solid rgb(41, 40, 40);
+}
+
+textarea {
+	height: 100px;
+	padding-top: 10px;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+	color: rgb(55, 56, 51) !important;
+	font-weight: 500;
+}
