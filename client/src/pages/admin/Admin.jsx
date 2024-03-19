@@ -8,8 +8,12 @@ const Admin = () => {
 	return (
 		<div>
 			<Header />
+			<div className="flex gap-10 items-center px-5">
+				<h1 className="text-3xl text-tertiary">Admin Portfolio</h1>
+				<div className="w-60 h-[1px] bg-tertiary"></div>
+			</div>
 			{portfolioData && (
-				<div className="m-5 ">
+				<div className="m-5 pb-5">
 					<MyTabs portfolioData={portfolioData} />
 				</div>
 			)}

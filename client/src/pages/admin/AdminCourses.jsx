@@ -4,38 +4,36 @@ import { Form, Modal, message } from "antd";
 import { HideLoading, ReloadData, ShowLoading } from "../../redux/rootsSlice";
 import axios from "axios";
 
-const AdminExperiences = () => {
+const AdminCourses = () => {
 	const dispatch = useDispatch();
 	const { portfolioData } = useSelector(state => state.root);
-	const { experiences } = portfolioData;
+	const { courses } = portfolioData;
 	const [showAddEditModal, setShowAddEditModal] = useState(false);
 	const [selectedItemForEdit, setSelectedItemForEdit] = useState(null);
 	const [type, setType] = useState("add");
 
 	const onFinish = async values => {
 		try {
-			if (type === "add" || type === "edit") {
-				dispatch(ShowLoading());
-				let response;
-				if (selectedItemForEdit) {
-					response = await axios.post("/api/portfolio/update-experience", {
-						...values,
-						_id: selectedItemForEdit._id,
-					});
-				} else {
-					response = await axios.post("/api/portfolio/add-experience", values);
-				}
+			dispatch(ShowLoading());
+			let response;
+			if (selectedItemForEdit) {
+				response = await axios.post("/api/portfolio/update-course", {
+					...values,
+					_id: selectedItemForEdit._id,
+				});
+			} else {
+				response = await axios.post("/api/portfolio/add-course", values);
+			}
 
+			dispatch(HideLoading());
+			if (response.data.success) {
+				message.success(response.data.message);
+				setShowAddEditModal(false);
+				setSelectedItemForEdit(null);
 				dispatch(HideLoading());
-				if (response.data.success) {
-					message.success(response.data.message);
-					setShowAddEditModal(false);
-					setSelectedItemForEdit(null);
-					dispatch(HideLoading());
-					dispatch(ReloadData(true));
-				} else {
-					message.error(response.data.message);
-				}
+				dispatch(ReloadData(true));
+			} else {
+				message.error(response.data.message);
 			}
 		} catch (error) {
 			dispatch(HideLoading());
@@ -47,7 +45,7 @@ const AdminExperiences = () => {
 	const onDelete = async item => {
 		try {
 			dispatch(ShowLoading());
-			const response = await axios.post("/api/portfolio/delete-experience", {
+			const response = await axios.post("/api/portfolio/delete-course", {
 				_id: item._id,
 			});
 			dispatch(HideLoading());
@@ -74,27 +72,26 @@ const AdminExperiences = () => {
 						setShowAddEditModal(true);
 					}}
 				>
-					Add Experiences
+					Add Course
 				</button>
 			</div>
-			<div className="grid grid-cols-4 gap-5 pt-5 sm:grid-cols-1">
-				{experiences.map((experience, i) => (
+			<div className="grid grid-cols-3 gap-5 pt-5 sm:grid-cols-1">
+				{courses.map((course, i) => (
 					<div
 						key={i}
-						className="shadow border p-5 border-gray-400 flex flex-col"
+						className="shadow border p-5 border-gray-400 flex flex-col gap-5"
 					>
-						<h1 className="text-secondary text-xl font-bold">
-							{experience.period}
-						</h1>
+						<h1 className="text-secondary text-xl font-bold">{course.title}</h1>
 						<hr />
-						<h1>Company: {experience.company}</h1>
-						<h1>Role: {experience.title}</h1>
-						<h1>{experience.description}</h1>
+						<div className="flex justify-center">
+							<img src={course.image} alt="" className="w-60 rounded" />
+						</div>
+						<h1>{course.description}</h1>
 						<div className="flex justify-end gap-5 mt-5">
 							<button
 								className="bg-secondary text-primary px-5 py-2 rounded-md"
 								onClick={() => {
-									onDelete(experience);
+									onDelete(course);
 								}}
 							>
 								DELETE
@@ -102,7 +99,7 @@ const AdminExperiences = () => {
 							<button
 								className="bg-primary text-secondary px-5 py-2 rounded-md"
 								onClick={() => {
-									setSelectedItemForEdit(experience);
+									setSelectedItemForEdit(course);
 									setShowAddEditModal(true);
 									setType("edit");
 								}}
@@ -117,7 +114,7 @@ const AdminExperiences = () => {
 			{(type === "add" || selectedItemForEdit) && (
 				<Modal
 					open={showAddEditModal}
-					title={selectedItemForEdit ? "Edit Experience" : "Add Experience"}
+					title={selectedItemForEdit ? "Edit Project" : "Add Project"}
 					footer={null}
 					onCancel={() => {
 						setShowAddEditModal(false);
@@ -127,20 +124,25 @@ const AdminExperiences = () => {
 					<Form
 						layout="vertical"
 						onFinish={onFinish}
-						initialValues={selectedItemForEdit || {}}
+						initialValues={
+							{
+								...selectedItemForEdit,
+							} || {}
+						}
 					>
-						<Form.Item name="period" label="Period">
-							<input placeholder="Period" />
-						</Form.Item>
-						<Form.Item name="company" label="Company">
-							<input placeholder="Company" />
-						</Form.Item>
 						<Form.Item name="title" label="Title">
 							<input placeholder="Title" />
 						</Form.Item>
-						<Form.Item name="description" label="Description">
-							<input placeholder="Description" />
+						<Form.Item name="image" label="Image URL">
+							<input placeholder="Image" />
 						</Form.Item>
+						<Form.Item name="description" label="Description">
+							<textarea placeholder="Description" />
+						</Form.Item>
+						<Form.Item name="link" label="Link">
+							<input placeholder="Link" />
+						</Form.Item>
+
 						<div className="flex justify-end">
 							{/* <button
 								className="border-primary text-primary px-5 py-2"
@@ -162,4 +164,4 @@ const AdminExperiences = () => {
 	);
 };
 
-export default AdminExperiences;
+export default AdminCourses;

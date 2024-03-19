@@ -127,4 +127,123 @@ router.post("/delete-experience", async (req, res) => {
 	}
 });
 
+//Add Projects
+
+router.post("/add-project", async (req, res) => {
+	try {
+		const project = new Project(req.body);
+		await project.save();
+		res.status(200).send({
+			data: project,
+			success: true,
+			message: "Project added successfully",
+		});
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
+//Edit Project
+
+router.post("/update-project", async (req, res) => {
+	try {
+		const project = await Project.findOneAndUpdate(
+			{ _id: req.body._id },
+			req.body,
+			{
+				new: true,
+			}
+		);
+		res.status(200).send({
+			data: project,
+			success: true,
+			message: "Project updated successfully",
+		});
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
+//Delete Project
+
+router.post("/delete-project", async (req, res) => {
+	const project = await Project.findOneAndDelete({
+		_id: req.body._id,
+	});
+	res.status(200).send({
+		data: project,
+		success: true,
+		message: "Project deleted successfully",
+	});
+});
+
+//Add Course
+
+router.post("/add-course", async (req, res) => {
+	try {
+		const course = new Course(req.body);
+		await course.save();
+		res.status(200).send({
+			data: course,
+			success: true,
+			message: "Course added successfully",
+		});
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
+//Edit Course
+
+router.post("/update-course", async (req, res) => {
+	try {
+		const course = await Course.findOneAndUpdate(
+			{ _id: req.body._id },
+			req.body,
+			{
+				new: true,
+			}
+		);
+		res.status(200).send({
+			data: course,
+			success: true,
+			message: "Course updated successfully",
+		});
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
+//Delete Course
+
+router.post("/delete-course", async (req, res) => {
+	const course = await Course.findOneAndDelete({
+		_id: req.body._id,
+	});
+	res.status(200).send({
+		data: course,
+		success: true,
+		message: "Course deleted successfully",
+	});
+});
+
+//Update Contacts
+
+router.post("/update-contact", async (req, res) => {
+	try {
+		const contact = await Contact.findOneAndUpdate(
+			{ _id: req.body._id },
+			req.body,
+			{ new: true }
+		);
+		res.status(200).send({
+			data: contact,
+			success: true,
+			message: "Contact update successfully",
+		});
+	} catch (error) {
+		res.status(500).send(error);
+	}
+});
+
 module.exports = router;

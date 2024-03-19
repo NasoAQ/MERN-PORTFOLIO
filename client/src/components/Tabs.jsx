@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Tabs } from "antd";
 import AdminIntro from "../pages/admin/AdminIntro";
 import AdminAbout from "../pages/admin/AdminAbout";
 import AdminExperiences from "../pages/admin/AdminExperiences";
+import AdminProjects from "../pages/admin/AdminProjects";
+import AdminCourses from "../pages/admin/AdminCourses";
+import AdminContact from "../pages/admin/AdminContact";
 
 const items = [
 	{
@@ -17,8 +20,23 @@ const items = [
 	},
 	{
 		key: "3",
+		label: "Projects",
+		children: <AdminProjects />,
+	},
+	{
+		key: "4",
+		label: "Courses",
+		children: <AdminCourses />,
+	},
+	{
+		key: "5",
 		label: "Experiences",
 		children: <AdminExperiences />,
+	},
+	{
+		key: "6",
+		label: "Contacts",
+		children: <AdminContact />,
 	},
 ];
 

@@ -63,7 +63,7 @@ const experienceSchema = new mongoose.Schema({
 });
 
 const projectSchema = new mongoose.Schema({
-	technology: {
+	technologies: {
 		type: Array,
 		required: true,
 	},
