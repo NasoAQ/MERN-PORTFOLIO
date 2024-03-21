@@ -4,8 +4,14 @@ import { useSelector } from "react-redux";
 
 const Projects = () => {
 	const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+	const [showPreview, setShowPreview] = useState(false);
 	const { portfolioData } = useSelector(state => state.root);
 	const { projects } = portfolioData;
+
+	const togglePreview = () => {
+		setShowPreview(!showPreview);
+	};
+
 	return (
 		<div>
 			<Section title="Projects" />
@@ -35,7 +41,8 @@ const Projects = () => {
 					<img
 						src={projects[selectedItemIndex].image}
 						alt=""
-						className="h-80 w-auto"
+						className="h-80 w-auto cursor-pointer"
+						onClick={togglePreview}
 					/>
 					<div className="flex flex-col gap-5">
 						<h1 className="text-secondary text-2xl">
@@ -54,6 +61,18 @@ const Projects = () => {
 					</div>
 				</div>
 			</div>
+			{showPreview && (
+				<div
+					className="fixed top-0 left-50 h-full flex items-center justify-center bg-black bg-opacity-50"
+					onClick={togglePreview}
+				>
+					<img
+						src={projects[selectedItemIndex].image}
+						alt=""
+						className="max-w-full max-h-full"
+					/>
+				</div>
+			)}
 		</div>
 	);
 };

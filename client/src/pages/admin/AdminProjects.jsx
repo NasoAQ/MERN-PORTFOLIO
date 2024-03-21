@@ -88,8 +88,11 @@ const AdminProjects = () => {
 						</h1>
 						<hr />
 						<img src={project.image} alt="" />
-						<h1>Role: {project.title}</h1>
-						<h1>{project.description}</h1>
+						<h2 className="font-bold text-tertiary">Description:</h2>
+						<p>{project.description}</p>
+						<h2 className="font-bold text-tertiary">Technologies:</h2>
+						<p>{project.technologies}</p>
+
 						<div className="flex justify-end gap-5 mt-5">
 							<button
 								className="bg-secondary text-primary px-5 py-2 rounded-md"
