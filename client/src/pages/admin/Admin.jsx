@@ -13,7 +13,7 @@ const Admin = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className="bg-primary">
 			<Header />
 			<div className="flex gap-10 items-center px-5 justify-between">
 				<div className="flex gap-10 items-center">

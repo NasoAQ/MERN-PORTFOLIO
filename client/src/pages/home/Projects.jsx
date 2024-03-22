@@ -14,7 +14,7 @@ const Projects = () => {
 
 	return (
 		<div>
-			<Section title="Projects" />
+			<Section title="Progetti" />
 			<div className="flex py-10 gap-20 sm:flex-col">
 				<div className="flex flex-col gap-10 border-l-2 border-[#b93e3e81] w-1/3 sm:flex-row sm:overflow-x-scroll sm:w-full">
 					{projects.map((project, i) => (
@@ -28,7 +28,7 @@ const Projects = () => {
 							<h1
 								className={`text-xl px-5 ${
 									selectedItemIndex === i
-										? "text-secondary border-secondary border-l-4 -ml-[3px] bg-[#b93e3e44] py-3"
+										? "text-secondary border-secondary border-l-4 -ml-[3px] bg-fourty py-3"
 										: "text-tertiary py-3"
 								}`}
 							>

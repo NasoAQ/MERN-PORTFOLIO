@@ -26,14 +26,14 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-	background: rgb(250, 39, 66);
+	background: rgb(173, 67, 40);
 }
 
 i {
 	cursor: pointer;
 }
 i:hover {
-	color: rgb(250, 39, 66);
+	color: rgb(173, 67, 40);
 }
 
 /* loader animation */

@@ -14,7 +14,9 @@ const LeftSidebar = () => {
 					<a href="https://github.com/NasoAQ" target="blank">
 						<i class="ri-github-fill text-tertiary "></i>
 					</a>
-					<i class="ri-mail-fill text-tertiary "></i>
+					<a href="mailto:myemail@naso.com">
+						<i class="ri-mail-fill text-tertiary "></i>
+					</a>
 				</div>
 				<div className="w-[1px] h-32 bg-secondary opacity-30 sm:hidden"></div>
 			</div>

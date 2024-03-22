@@ -7,7 +7,7 @@ const Contact = () => {
 	const contactData = portfolioData && portfolioData.contact[0];
 	return (
 		<div>
-			<Section title="Say Hello" />
+			<Section title="Contattami" />
 			<div className="flex sm:flex-col items-center justify-between">
 				<div className="flex flex-col ">
 					<h1 className="text-secondary text-sm">{"{"}</h1>
@@ -25,13 +25,15 @@ const Contact = () => {
 					<h1 className="text-secondary text-sm">{"}"}</h1>
 				</div>
 				<div className="h-[400px]">
-					<dotlottie-player
-						src="https://lottie.host/aa1c0060-aa9d-4a20-8fc7-e4e8c1d2d0dd/TeXSLrrudz.json"
-						background="transparent"
-						speed="1"
-						loop
-						autoplay
-					></dotlottie-player>
+					<a href="mailto:myemail@naso.com">
+						<dotlottie-player
+							src="https://lottie.host/aa1c0060-aa9d-4a20-8fc7-e4e8c1d2d0dd/TeXSLrrudz.json"
+							background="transparent"
+							speed="1"
+							loop
+							autoplay
+						></dotlottie-player>
+					</a>
 				</div>
 			</div>
 		</div>

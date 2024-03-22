@@ -9,8 +9,8 @@ function About() {
 	const { skills, lottieURL, description1, description2 } = aboutData || {};
 
 	return (
-		<div>
-			<Section title="About" />
+		<div id="about-section">
+			<Section title="Su di me" />
 			<div className="flex items-center w-full sm:flex-col">
 				<div className="h-[70vh] w-1/2 sm:w-full">
 					<dotlottie-player
@@ -29,12 +29,12 @@ function About() {
 
 			<div className="py-5">
 				<h1 className="text-secondary text-2xl">
-					Hera are a few technology I've been working with recently
+					Queste sono le tecnologie con cui lavoro attualmente
 				</h1>
 				<div className="flex flex-wrap gap-10 mt-5">
 					{skills.map((skill, i) => (
-						<div className="border border-secondary py-3 px-10" key={i}>
-							<h1 className="text-secondary">{skill}</h1>
+						<div className="border rounded-md border-fourty py-3 px-10" key={i}>
+							<h1 className="text-tertiary">{skill}</h1>
 						</div>
 					))}
 				</div>

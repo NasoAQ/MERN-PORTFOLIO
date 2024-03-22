@@ -22,7 +22,7 @@ const Courses = () => {
 							<h1
 								className={`text-xl px-5 ${
 									selectedItemIndex === i
-										? "text-secondary border-secondary border-l-4 -ml-[3px] bg-[#b93e3e44] py-3"
+										? "text-secondary border-secondary border-l-4 -ml-[3px] bg-fourty py-3"
 										: "text-tertiary py-3"
 								}`}
 							>
