@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { HideLoading, ShowLoading } from "../../redux/rootsSlice";
 import { useDispatch } from "react-redux";
+import Header from "../../components/Header";
 
 const Login = () => {
 	const [user, setUser] = useState({
@@ -31,8 +32,9 @@ const Login = () => {
 	};
 
 	return (
-		<div className="flex justify-center items-center h-screen bg-primary">
-			<div className="w-96 flex gap-5 p-5 shadow border border-gray-400 flex-col bg-gray-200">
+		<div className="flex justify-center flex-col items-center h-screen bg-primary">
+			<Header />
+			<div className="w-96 flex gap-5 p-5 shadow border border-gray-400 flex-col bg-fourty">
 				<h1 className="text-2xl">Portfolio Admin Login</h1>
 				<hr />
 				<input

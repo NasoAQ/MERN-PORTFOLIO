@@ -27,7 +27,7 @@ function About() {
 				</div>
 			</div>
 
-			<div className="py-5">
+			<div className="py-1">
 				<h1 className="text-secondary text-2xl">
 					Queste sono le tecnologie con cui lavoro attualmente
 				</h1>

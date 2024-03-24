@@ -52,7 +52,7 @@ const AdminIntro = () => {
 				</Form.Item>
 				<div className="flex justify-end">
 					<button
-						className="px-10 py-2 bg-primary text-secondary rounded-3xl"
+						className="px-10 py-2 bg-fourty text-secondary rounded-3xl"
 						type="submit"
 					>
 						SAVE

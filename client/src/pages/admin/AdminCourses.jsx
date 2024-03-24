@@ -66,7 +66,7 @@ const AdminCourses = () => {
 		<div>
 			<div className="flex justify-end">
 				<button
-					className="bg-blue-500 hover:bg-blue-700 text-primary font-bold py-2 px-4 rounded"
+					className="bg-fourty hover:bg-blue-300 text-tertiary font-bold py-2 px-4 rounded"
 					onClick={() => {
 						//setSelectedItemForEdit(null);
 						setShowAddEditModal(true);
@@ -97,7 +97,7 @@ const AdminCourses = () => {
 								DELETE
 							</button>
 							<button
-								className="bg-primary text-secondary px-5 py-2 rounded-md"
+								className="bg-fourty hover:bg-blue-300 text-secondary px-5 py-2 rounded-md"
 								onClick={() => {
 									setSelectedItemForEdit(course);
 									setShowAddEditModal(true);
